@@ -35,3 +35,8 @@ t = Template(;
 )
 t("JuliaLearn")
 ```
+
+Create the GitHub reopository and push master to it.
+
+One also needs to create the `gh-pages` branc on GitHub.
+
