@@ -1,8 +1,4 @@
-using Learn
-using Documenter
-
-DocMeta.setdocmeta!(Learn, :DocTestSetup, :(using Learn); recursive=true)
-
+include("make_structure.jl")
 makedocs(;
     modules=[Learn],
     authors="Brynjar Smári Bjarnason <binni@binnisb.com> and contributors",
@@ -15,6 +11,10 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
+        "Library" => [
+            "Index" => "library/all_index.md"
+        ],
+        "Create Package" => "create_package.md"
     ],
 )
 

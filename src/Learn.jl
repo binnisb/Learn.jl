@@ -19,7 +19,7 @@ Returns x + y
 
 ```jldoctest
 julia> add(1+3im,3+5im)
-5 + 8im
+4 + 8im
 ```
 """
 add(x::T, y::T) where {T<:Number} = x + y
