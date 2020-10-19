@@ -1,4 +1,6 @@
 # Create new package
+
+## Creat from template
 First add PkgTemplates
 ```julia
 (@v1.5) pkg> add PkgTemplates
@@ -26,15 +28,22 @@ Create the GitHub reopository `Learn.jl` and push master to it.
 
 To be able to push the docs to GitHub pages, I needed to follow [DocumenterTools.genkeys](https://juliadocs.github.io/Documenter.jl/stable/lib/public/#DocumenterTools.genkeys) and create the deploy key and `DOCUMENTER_KEY` secret.
 
-To run DocTests within `src/*.jl` files you need to add a line to [docs/make.jl]:
+## Tests, Documenter and doctests
+
+The template above creates a `GitHub Action` to build the docs, and run `doctest`. Out of the box it actually couldn't run `doctest` with tests defined in doc strings in source files.
+
+How I solved it:
+
+First I created a [docs/make_structure.jl](docs/make_structucture.jl) which imports and setup what is needed for `Documenter` and `doctest`, and then two files [docs/make_docstring.jl](docs/make_docstring.jl) and [docs/make.jl](docs/make.jl), where the former only runs doctest, and the latter runs doctest and builds and deploys the docs.
+
+Both cases needed the following, which lives in `make_structure.jl` 
 
 ```julia
 DocMeta.setdocmeta!(Learn, :DocTestSetup, :(using Learn); recursive=true)
 ```
-
 which makes the Learn module available in all Docstrings in the julia files. If you create submodules, that might need some extra manipulations to get that working.
 
-I also chaged the `.github/workflows/ci.yml` to call a file `make_doctest.jl` for running the tests, and then calling `make.jl` to build the docs and deploy. I refactored out the library calls and setup needed for both.
+I also chaged the `.github/workflows/ci.yml` to call a file `make_doctest.jl` for running the tests, and then calling `make.jl` to build the docs and deploy.
 
 Then from terminal:
 
@@ -44,3 +53,4 @@ julia --project=docs  docs/make_doctest.jl  # Runs the Doctests
 julia --project=docs  docs/make.jl  # Builds documents and runs the Doctests
 julia --project=.  test/runtests.jl  # Runs the test suite for Learn
 ```
+should work.
