@@ -1,4 +1,4 @@
-module JuliaLearn
+module Learn
 
 # Write your package code here.
 export add

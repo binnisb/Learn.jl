@@ -1,14 +1,14 @@
 ```@meta
-CurrentModule = JuliaLearn
+CurrentModule = Learn
 ```
 
-# JuliaLearn
+# Learn
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [JuliaLearn]
+Modules = [Learn]
 ```
 
 
@@ -26,16 +26,16 @@ t = Template(;
     plugins=[
         Git(; manifest=true, ssh=true, jl=true),
         Tests(;project=true),
-        GitHubActions(; x86=true),
+        GitHubActions(; x86=false),
         Codecov(),
         Documenter{GitHubActions}(),
         Develop(),
         Citation(;readme=true)
     ],
 )
-t("JuliaLearn")
+t("Learn")
 ```
 
-Create the GitHub reopository `JuliaLearn.jl` and push master to it.
+Create the GitHub reopository `Learn.jl` and push master to it.
 
 To be able to push the docs to GitHub pages, I needed to follow [DocumenterTools.genkeys](https://juliadocs.github.io/Documenter.jl/stable/lib/public/#DocumenterTools.genkeys) and create the deploy key and `DOCUMENTER_KEY` secret.
