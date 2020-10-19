@@ -34,7 +34,7 @@ uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 version = "0.21.1"
 
 [[Learn]]
-path = "C:\\Users\\obr_brynjarb\\Projects\\JuliaLearn.jl"
+path = ".."
 uuid = "7fe9aef3-13c5-4b6c-9e7d-0c7329c95c36"
 version = "0.2.0"
 
