@@ -12,9 +12,7 @@ Returns x + y
 # Examples
 
 ```jldoctest
-julia> x, y = 1, 3;
-
-julia> add(x, y)
+julia> x, y = 1, 3; add(x, y)
 4
 
 julia> which_sig(add, x, y)
@@ -32,9 +30,7 @@ Returns x + y
 # Examples
 
 ```jldoctest base
-julia> x, y = 1+3im, 3+5im;
-
-julia> add(x, y)
+julia> x, y = 1+3im, 3+5im; add(x, y)
 4 + 8im
 
 julia> which_sig(add, x, y)
@@ -51,9 +47,7 @@ Returns x*y
 # Examples
 
 ```jldoctest base
-julia> x, y = "my", "string";
-
-julia> add(x, y)
+julia> x, y = "my", "string"; add(x, y)
 "mystring"
 
 julia> which_sig(add, x, y)
@@ -70,9 +64,7 @@ Returns x + y
 # Examples
 
 ```jldoctest base
-julia> x, y = Vector([1,2,3]), Vector([4,5,6]);
-
-julia> add(x, y)
+julia> x, y = Vector([1,2,3]), Vector([4,5,6]); add(x, y)
 3-element Array{Int64,1}:
  5
  7
