@@ -36,6 +36,6 @@ t = Template(;
 t("JuliaLearn")
 ```
 
-Create the GitHub reopository and push master to it.
+Create the GitHub reopository `JuliaLearn.jl` and push master to it.
 
-
+To be able to push the docs to GitHub pages, I needed to follow [DocumenterTools.genkeys](https://juliadocs.github.io/Documenter.jl/stable/lib/public/#DocumenterTools.genkeys) and create the deploy key and `DOCUMENTER_KEY` secret.
