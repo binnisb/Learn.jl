@@ -2,7 +2,7 @@
 CurrentModule = Learn
 ```
 
-# Learn
+# Learn.jl
 
 ```@index
 ```

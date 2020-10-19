@@ -1,6 +1,8 @@
 using Learn
 using Documenter
 
+DocMeta.setdocmeta!(Learn, :DocTestSetup, :(using Learn); recursive=true)
+
 makedocs(;
     modules=[Learn],
     authors="Brynjar Smári Bjarnason <binni@binnisb.com> and contributors",
