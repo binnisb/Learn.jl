@@ -4,6 +4,8 @@ This module is for exploration of Julia, Documenter and other interesting concep
 module Learn
 export add, ∑
 
+include("DateUtils/DayCountConvention.jl")
+
 """
     add(x::Int64, y::Int64)
 

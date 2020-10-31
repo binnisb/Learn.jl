@@ -3,5 +3,8 @@ uuid = "7fe9aef3-13c5-4b6c-9e7d-0c7329c95c36"
 authors = ["Brynjar Smári Bjarnason <binni@binnisb.com> and contributors"]
 version = "0.2.0"
 
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+
 [compat]
 julia = "1.5"

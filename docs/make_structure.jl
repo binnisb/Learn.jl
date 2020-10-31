@@ -9,7 +9,8 @@ Importing modules and defining helper functions for doctest
 function doctest_setup()
 quote
     using Learn
-    # Extract the string representation of the method of f having parameters p
+    # Extract the string representation of the method of f having parameters p to 
+    # make sure the doctest runs correct function
     which_sig(f, p...) = repr(Base.which(f, map(typeof, p))) |> s->split(s," in ") |> first |> strip
 end
 end
