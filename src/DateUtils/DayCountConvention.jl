@@ -1,13 +1,17 @@
 module DayCountConvention
 using Dates
-export AbstractDayCountConvention
 export Date
-export DayCount30_360, DayCount30A_360, DayCount30E_360, DayCount30E_360ISDA
-export DayCountAct, DayCountAct_360, DayCountAct_364
-export DayCountAct_365Fixed, DayCountAct_365Actual, DayCountAct_365Long, DayCountAct_365_25
-export DayCountAct_Act, DayCountAct_ActISDA
 
 export days, yearfraction
+
+export AbstractDayCountConvention
+
+export DayCount30_360, DayCountAct,  DayCountAct_Act
+
+export DayCount30A_360, DayCount30E_360, DayCount30E_360ISDA
+export DayCountAct_360, DayCountAct_364, DayCountAct_365Fixed, DayCountAct_365Actual, DayCountAct_365Long, DayCountAct_365_25
+export DayCountAct_ActISDA
+
 
 abstract type AbstractDayCountConvention end
 
