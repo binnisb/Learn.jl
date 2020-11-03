@@ -1,4 +1,7 @@
-module DayCountConvention
+"""
+Julia implementation of DayCount for various financial conventions
+"""
+module DayCount
 using Dates
 export Date
 
@@ -34,6 +37,12 @@ abstract type DayCountAct_ActISDA <: DayCountAct_Act end
 
 
 @inline daysFormula(y1::Int, y2::Int, m1::Int, m2::Int, d1::Int, d2::Int)::Int = 360(y2-y1) + 30(m2-m1) + (d2-d1)
+"""
+    function days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30A_360
+
+Calculates days between startDate and endDate using 2006 ISDA definitions 4.16f. 
+also known as 30/360 U.S. Municipal, 30/360 Bond Basis, 30/360 ISDA
+"""
 function days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30A_360
     d1 = min(day(startDate), 30)
     de = day(endDate)
