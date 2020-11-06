@@ -43,7 +43,7 @@ abstract type DayCountAct_ActISDA <: DayCountAct_Act end
 Calculates days between startDate and endDate using 2006 ISDA definitions 4.16f. 
 also known as 30/360 U.S. Municipal, 30/360 Bond Basis, 30/360 ISDA
 """
-function days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30A_360
+days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30A_360 = begin
     d1 = min(day(startDate), 30)
     de = day(endDate)
     d2 = if d1 == 30
@@ -53,13 +53,13 @@ function days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30A_
     end
     daysFormula(year(startDate), year(endDate), month(startDate), month(endDate), d1, d2)
 end
-function days(startDate::Date, endDate::Date, ::Type{T})::Int where T <: DayCount30E_360 
+days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30E_360 = begin
     daysFormula(
-        year(startDate), year(endDate), month(startDate), month(endDate),
-        min(day(startDate), 30), min(day(endDate), 30)
-        )
+        year(startDate), year(endDate),
+        month(startDate), month(endDate),
+        min(day(startDate), 30), min(day(endDate), 30))
 end
-function days(startDate::Date, endDate::Date, terminationDate::Date, ::Type{T})::Int where T <: DayCount30E_360ISDA
+days(startDate::Date, endDate::Date, terminationDate::Date, ::Type{T}) where T <: DayCount30E_360ISDA = begin
     d1 = if startDate == Dates.lastdayofmonth(startDate)
         30
     else
@@ -75,8 +75,7 @@ function days(startDate::Date, endDate::Date, terminationDate::Date, ::Type{T}):
 end
 yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCount30_360 = 
     days(startDate, endDate, T) / 360.0
-yearfraction(startDate::Date, endDate::Date, terminationDate::Date, ::Type{T}) where T <: DayCount30_360 = 
-    days(startDate, endDate, terminationDate, T) / 360.0
+yearfraction(startDate::Date, endDate::Date, terminationDate::Date, ::Type{T}) where T <: DayCount30_360 = days(startDate, endDate, terminationDate, T) / 360.0
 
 days(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct = 
     (endDate - startDate).value
@@ -86,7 +85,7 @@ yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct_3
     days(startDate, endDate, T) / 364.0
 yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct_365Fixed = 
     days(startDate, endDate, T) / 365.0
-function yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct_365Actual
+yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct_365Actual = begin
     d = days(startDate, endDate, T)
     for y ∈ year(startDate):year(endDate)
         if Dates.isleapyear(y) && startDate < Date(y,2,29) ≤ endDate
