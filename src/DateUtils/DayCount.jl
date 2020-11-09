@@ -1,9 +1,4 @@
-"""
-Julia implementation of DayCount for various financial conventions
-"""
-module DayCount
 using Dates
-export Date
 
 export days, yearfraction
 
@@ -93,6 +88,4 @@ yearfraction(startDate::Date, endDate::Date, ::Type{T}) where T <: DayCountAct_3
         end
     end
     d / 365.0
-end
-
 end

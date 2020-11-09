@@ -3,5 +3,4 @@ module Schedule
 
     abstract type PeriodicSchedule <: AbstractSchedule end
 
-    
 end
