@@ -17,4 +17,5 @@ using Test
     end
 
     include("testDayCounts.jl")
+    include("testSwedishHolidays.jl")
 end

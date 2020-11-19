@@ -3,7 +3,6 @@ export SwedenCalendar
 
 struct SwedenCalendar <: HolidayCalendar end
 
-BusinessDays.isholiday(::Type{SwedenCalendar}, dt::Date) = BusinessDays.isholiday(SwedenCalendar(), dt)
 BusinessDays.isholiday(::SwedenCalendar, dt::Date)::Bool = begin
     yy = year(dt)
     if dt == Date(yy, January, 1) return true end  # Nyårsdagen
@@ -27,9 +26,9 @@ BusinessDays.isholiday(::SwedenCalendar, dt::Date)::Bool = begin
     pentecost = easter_sunday + Day(49)
     pentecost_day_two = easter_sunday + Day(50)
 
-    midsummer_eve = Dates.tonext(Date(yy, June, 19), Friday)
+    midsummer_eve = Dates.tonext(Date(yy, June, 19), Friday; same=true)
     midsummer_day = midsummer_eve + Day(1)
-    all_saints_day = Dates.tonext(Date(yy, October, 31), Saturday)
+    all_saints_day = Dates.tonext(Date(yy, October, 31), Saturday; same=true)
 
     if dt == good_friday return true end  # Långfredagen
     if dt == easter_sunday return true end  # Påskdagen
