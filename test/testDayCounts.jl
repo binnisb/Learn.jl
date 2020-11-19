@@ -1,5 +1,4 @@
-using Learn.DayCount
-using Dates: Year
+using Dates: Year, Date
 
 toDate(dstr::String)::Date = Date(dstr, "mm/dd/yy") + Year(2000)
 
