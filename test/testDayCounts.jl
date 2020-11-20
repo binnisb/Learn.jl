@@ -8,14 +8,14 @@ startDates = map(toDate, ["01/15/07", "01/15/07", "01/15/07", "09/30/07", "09/30
 endDates   = map(toDate, ["01/30/07", "02/15/07", "07/15/07", "03/31/08", "10/31/07", "09/30/08", "01/31/07", "02/28/07", "03/31/07", "02/28/07", "08/31/07", "02/28/07", "02/29/08", "02/28/09", "03/30/08", "03/31/08", "03/05/07", "11/28/07", "02/29/08", "08/31/08", "02/28/09", "08/31/09"])
 terminationDate = toDate("02/28/09")
 
-function test_helper(daysResults, daysFracResults, ::Type{T}) where T <: AbstractDayCountConvention
+function test_helper(daysResults, daysFracResults, ::Type{T}) where T <: Learn.AbstractDayCountConvention
     for (sDate, eDate, daysR, yearFracR) in zip(startDates, endDates, daysResults, daysFracResults)
         @test days(sDate, eDate, T) == daysR
         @test yearfraction(sDate, eDate, T) ≈ yearFracR atol=0.0001    
     end
 end
 
-function test_helper(daysResults, daysFracResults, tDate, ::Type{T}) where T <: AbstractDayCountConvention
+function test_helper(daysResults, daysFracResults, tDate, ::Type{T}) where T <: Learn.AbstractDayCountConvention
     for (sDate, eDate, daysR, yearFracR) in zip(startDates, endDates, daysResults, daysFracResults)
         @test days(sDate, eDate, tDate, T) == daysR
         @test yearfraction(sDate, eDate, tDate, T) ≈ yearFracR atol=0.0001

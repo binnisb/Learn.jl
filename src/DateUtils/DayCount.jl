@@ -2,9 +2,9 @@ using Dates
 
 export days, yearfraction
 
-export AbstractDayCountConvention
+#export AbstractDayCountConvention
 
-export DayCount30_360, DayCountAct,  DayCountAct_Act
+#export DayCount30_360, DayCountAct,  DayCountAct_Act
 
 export DayCount30A_360, DayCount30E_360, DayCount30E_360ISDA
 export DayCountAct_360, DayCountAct_364, DayCountAct_365Fixed, DayCountAct_365Actual, DayCountAct_365Long, DayCountAct_365_25

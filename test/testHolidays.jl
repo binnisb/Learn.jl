@@ -4,21 +4,21 @@ struct HolidaysParsed
     weekday::String
     date::Date
     name::String
-    swedishname::String
+    localname::String
     holidaytype::String
     comments::String
 end
-# HolidaysParsed(weekday, date, name, swedishname, holidaytype, comments) = begin
+# HolidaysParsed(weekday, date, name, localname, holidaytype, comments) = begin
 #     date = Date(date.children[1].attributes["datetime"])
-#     HolidaysParsed(nodeText(weekday), date, nodeText(name), nodeText(swedishname), nodeText(holidaytype), nodeText(comments))
+#     HolidaysParsed(nodeText(weekday), date, nodeText(name), nodeText(localname), nodeText(holidaytype), nodeText(comments))
 # end
 
 # How I got the testcases for sweden
 
 # using HTTP, Gumbo, Cascadia
-# HolidaysParsed(weekday, date, name, swedishname, holidaytype, comments) = begin
+# HolidaysParsed(weekday, date, name, localname, holidaytype, comments) = begin
 #     date = Date(date.children[1].attributes["datetime"])
-#     HolidaysParsed(nodeText(weekday), date, nodeText(name), nodeText(swedishname), nodeText(holidaytype), nodeText(comments))
+#     HolidaysParsed(nodeText(weekday), date, nodeText(name), nodeText(localname), nodeText(holidaytype), nodeText(comments))
 # end
 
 # function fetch_holidays(yr::Year)
@@ -33,18 +33,18 @@ end
 
 # hs = [((fetch_holidays(Year(yr)) for yr in 2015:2022)...)...]
 
-# open(joinpath(@__DIR__,"./testSwedishHolidays.txt"), "w") do io
+# open(joinpath(@__DIR__,"./testHolidaysSweden.txt"), "w") do io
 #     for h in hs
-#         println(io, "$(h.weekday),$(h.date),$(h.name),$(h.swedishname),$(h.holidaytype),$(h.comments)")
+#         println(io, "$(h.weekday),$(h.date),$(h.name),$(h.localname),$(h.holidaytype),$(h.comments)")
 #     end
 # end
 
-HolidaysParsed(weekday, date, name, swedishname, holidaytype, comments) = begin
+HolidaysParsed(weekday, date, name, localname, holidaytype, comments) = begin
     date = Date(date)
-    HolidaysParsed(String(weekday), date, String(name), String(swedishname), String(holidaytype), String(comments))
+    HolidaysParsed(String(weekday), date, String(name), String(localname), String(holidaytype), String(comments))
 end
 
-hs = open(joinpath(@__DIR__,"./testSwedishHolidays.txt")) do io
+hs = open(joinpath(@__DIR__,"./testHolidaysSweden.txt")) do io
     readlines(io) .|> x -> split(x,",") |> x->HolidaysParsed(x...)
 end
 
